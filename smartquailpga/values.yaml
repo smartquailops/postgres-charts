@@ -1,43 +1,18 @@
-# Default values for smartquaildb.
+# Default values for smartquailpga.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: postgres
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "13-alpine"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
-volumeMounts:
-    mountPath: /var/lib/postgresql/data
-    name: smartquaildb
-
-envFrom:
-    configMapRef:
-    name: postgres-config
-
-env:
-    name: POSTGRES_PASSWORD 
-    valueFrom:
-    secretKeyRef:
-      name: postgres-secrets
-      key: POSTGRES_PASSWORD 
-    name: PGDATA
-    value: /var/lib/postgresql/data/pgdata
-             
-volumes:
-    name: smartquaildb
-    persistentVolumeClaim:
-      claimName: smartquaildb-pv-claim
-
-
-
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -47,7 +22,6 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
-  Image pull secrets:  postgres-secrets
 
 podAnnotations: {}
 
