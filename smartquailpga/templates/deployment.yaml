@@ -19,10 +19,10 @@ spec:
           image: "dpage/pgadmin4"
           resources:
             requests:
-              cpu: 500m
+              cpu: 250m
               memory: 900M
             limits:
-              cpu: 700m
+              cpu: 359m
               memory: 1Gi
           imagePullPolicy: IfNotPresent
           envFrom:
